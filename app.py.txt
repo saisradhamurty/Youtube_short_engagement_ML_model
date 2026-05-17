@@ -1,0 +1,28 @@
+import streamlit as st
+import joblib
+import numpy as np
+
+# Load trained pipeline (scaler + model)
+pipeline = joblib.load("pipeline.pkl")
+
+# Title
+st.title("YouTube Engagement Predictor 🎯")
+
+st.write("Enter your video details below:")
+
+# Inputs
+views = st.number_input("Views", min_value=0.0)
+likes = st.number_input("Likes", min_value=0.0)
+comments = st.number_input("Comments", min_value=0.0)
+
+# Predict button
+if st.button("Predict"):
+    
+    # Input array (2D format required)
+    input_data = np.array([[views, likes, comments]])
+    
+    # Prediction (pipeline handles scaling internally)
+    prediction = pipeline.predict(input_data)
+    
+    # Output
+    st.success(f"Predicted Engagement Rate: {prediction[0]:.2f}%")

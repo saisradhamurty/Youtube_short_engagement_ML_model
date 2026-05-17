@@ -1,0 +1,8 @@
+1. pandas
+2. train_test_split
+3. simple imputer
+4. standard scale
+5. pipeline
+6. numpy
+7. RandomForestRegressor
+8. root_mean_squared_error
